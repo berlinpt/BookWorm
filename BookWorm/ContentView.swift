@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var books: [Book]
+    //@Query(sort: \Book.title) var books: [Book]
+    @Query(sort: [
+        SortDescriptor(\Book.title),
+        SortDescriptor(\Book.author)
+    ]) var books: [Book]
     
     @State private var showingAddScreen = false
     
